@@ -6,23 +6,22 @@ import Post from '../App/Post';
 import UserList from '../App/UserList';
 import {IMAGE} from '../../assets/images/images';
 const Tabbar = createMaterialBottomTabNavigator({
-  Post: {
-    screen: Post,
-    navigationOptions: {
-      tabBarLabel: 'Post',
-      //activeColor: 'black',
-      barStyle: {backgroundColor: 'white'},
-      tabBarIcon: () => <Image style={styles.icon} source={IMAGE.POST} />,
-    },
-  },
-
   UserList: {
     screen: UserList,
     navigationOptions: {
       tabBarLabel: 'UserList',
-      //activeColor: 'black',
+      activeColor: 'red',
       barStyle: {backgroundColor: 'white'},
       tabBarIcon: () => <Image style={styles.icon} source={IMAGE.USERLIST} />,
+    },
+  },
+  Post: {
+    screen: Post,
+    navigationOptions: {
+      tabBarLabel: 'Post',
+      activeColor: 'red',
+      barStyle: {backgroundColor: 'white'},
+      tabBarIcon: () => <Image style={styles.icon} source={IMAGE.POST} />,
     },
   },
 });
