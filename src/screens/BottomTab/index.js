@@ -5,6 +5,7 @@ import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom
 import Post from '../App/Post';
 import UserList from '../App/UserList';
 import {IMAGE} from '../../assets/images/images';
+import {SettingTab} from '../Stacks/SettingTab';
 const Tabbar = createMaterialBottomTabNavigator({
   UserList: {
     screen: UserList,
@@ -15,8 +16,8 @@ const Tabbar = createMaterialBottomTabNavigator({
       tabBarIcon: () => <Image style={styles.icon} source={IMAGE.USERLIST} />,
     },
   },
-  Post: {
-    screen: Post,
+  SettingTab: {
+    screen: SettingTab,
     navigationOptions: {
       tabBarLabel: 'Post',
       activeColor: 'red',

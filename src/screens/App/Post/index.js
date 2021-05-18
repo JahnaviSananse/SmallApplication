@@ -9,13 +9,15 @@ import {
   SafeAreaView,
   FlatList,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
 
-const Post = () => {
+const Post = ({navigation}) => {
   const [list, setList] = useState([]);
 
-  const APP_ID = '60a2006068a4f057f0c70e0f';
+  // const APP_ID = '60a2006068a4f057f0c70e0f';
+  const APP_ID = '60a353bb301f6600f7a467af';
 
   useEffect(() => {
     axios
@@ -49,10 +51,29 @@ const Post = () => {
             style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
           />
           <View style={{flexDirection: 'row'}}>
-            <Image style={styles.likeButton} source={IMAGE.HEART} />
+            <Image style={styles.likeButton} source={IMAGE.FILLHEART} />
             <Text style={styles.likeDigit}> {item.likes}</Text>
             <Text style={styles.like}> Likes</Text>
+            <Text style={styles.publishDate}> {item.publishDate}</Text>
           </View>
+          <View
+            style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
+          />
+          {console.log('$$$$$$$$$$$$$$$4444', item.id)}
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Comments', {
+                commentId: item.id,
+              });
+            }}>
+            <Text style={styles.navComments}> GET POST COMMENTS </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('OwnerProfile');
+            }}>
+            <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+          </TouchableOpacity>
         </View>
       </>
     );
@@ -80,18 +101,33 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   likeButton: {
-    height: 20,
-    width: 20,
+    height: 15,
+    width: 15,
+    top: 5,
   },
   dp: {
     width: 60,
     height: 60,
     borderRadius: 30,
   },
-  like: {fontSize: 20, left: 10},
+  like: {fontSize: 16, left: 7, top: 1},
+  like: {fontSize: 16, left: 7, top: 1},
+  navComments: {
+    fontSize: 16,
+    left: 7,
+    top: 3,
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
   textEmail: {fontSize: 13, top: 3, left: 3},
   link: {fontSize: 15, top: 3, color: 'black', left: 3},
-  likeDigit: {fontSize: 19, top: 1, color: 'black', left: 3},
+  likeDigit: {fontSize: 16, top: 1, color: 'black', left: 3},
+  publishDate: {
+    fontSize: 15,
+    top: 2.5,
+    color: 'grey',
+    left: 80,
+  },
   textName: {fontSize: 20, fontWeight: 'bold', top: 10, left: 5},
   textID: {fontSize: 19, color: 'grey', top: 10},
   text: {fontSize: 21, color: 'black', top: 10},

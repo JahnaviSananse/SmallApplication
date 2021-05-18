@@ -15,7 +15,8 @@ import {IMAGE} from '../../../assets/images/images';
 const UserList = () => {
   const [list, setList] = useState([]);
 
-  const APP_ID = '60a2006068a4f057f0c70e0f';
+  // const APP_ID = '60a2006068a4f057f0c70e0f';
+  const APP_ID = '60a353bb301f6600f7a467af';
 
   useEffect(() => {
     axios
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   textEmail: {fontSize: 13.5, top: 3, left: 3},
   textName: {fontSize: 20, fontWeight: 'bold', top: 10, left: 5},
-  textID: {fontSize: 19, color: 'grey', top: 10},
+  textID: {fontSize: 18, color: 'grey', top: 10},
 });
 
 export default UserList;
