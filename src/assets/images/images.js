@@ -35,4 +35,6 @@ export const IMAGE = {
   PROFILE: require('../images/profile.png'),
   POST: require('../images/post.png'),
   USERLIST: require('../images/userList.png'),
+  HEART: require('../images/heart.png'),
+  FILLHEART: require('../images/fillHeart.png'),
 };

@@ -30,8 +30,8 @@ const UserList = () => {
       <View
         style={{
           width: '80%',
-          padding: '12%',
-          margin: '10%',
+          padding: '13%',
+          margin: '5%',
           backgroundColor: 'pink',
           // position: 'relative',
           alignSelf: 'center',
