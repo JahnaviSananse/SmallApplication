@@ -31,8 +31,8 @@ const UserList = ({navigation}) => {
     return (
       <View
         style={{
-          width: '80%',
-          padding: '4.5%',
+          width: '90%',
+          padding: '6%',
           margin: '5%',
           backgroundColor: '#dae1e7',
           // position: 'relative',
@@ -42,13 +42,16 @@ const UserList = ({navigation}) => {
         <Image style={styles.stretch} source={{uri: item.picture}} />
         <Text style={styles.textID}> {item.id}</Text>
         <Text style={styles.textName}>
-          {item.title + '. ' + item.firstName + item.lastName}
+          {item.title + '. ' + item.firstName + ' ' + item.lastName}
         </Text>
         <Text style={styles.textEmail}> {item.email}</Text>
         <View
           style={{borderBottomWidth: 1, margin: 12, width: '100%', right: 9}}
         />
-        <TouchableOpacity onPress={() => navigation.navigate('FullProfile')}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('FullProfile', {fullProfile: item.id})
+          }>
           <Text style={styles.navComments}> GET FULL PROFILE </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('PostList')}>
@@ -67,8 +70,8 @@ const UserList = ({navigation}) => {
 
 const styles = StyleSheet.create({
   stretch: {
-    width: 290,
-    height: 220,
+    width: 320,
+    height: 300,
   },
   navComments: {
     fontSize: 16,
@@ -77,9 +80,9 @@ const styles = StyleSheet.create({
     color: 'blue',
     textDecorationLine: 'underline',
   },
-  textEmail: {fontSize: 13.5, top: 3, left: 3},
-  textName: {fontSize: 20, fontWeight: 'bold', top: 10, left: 5},
-  textID: {fontSize: 18, color: 'grey', top: 10},
+  textEmail: {fontSize: 16, top: 5, left: 2},
+  textName: {fontSize: 25, fontWeight: 'bold', top: 10, left: 5},
+  textID: {fontSize: 22, color: 'grey', top: 10},
 });
 
 export default UserList;
