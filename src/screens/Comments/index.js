@@ -16,7 +16,9 @@ const Comments = props => {
   const [list, setList] = useState([]);
 
   // const APP_ID = '60a2006068a4f057f0c70e0f';
-  const APP_ID = '60a353bb301f6600f7a467af';
+  // const APP_ID = '60a353bb301f6600f7a467af';
+  const APP_ID = '60a4b70100c81f3310527bd1';
+
   //   console.log('@@@@@@@@@@@@@@@2222', props.route.params?.commentId);
   useEffect(() => {
     axios
