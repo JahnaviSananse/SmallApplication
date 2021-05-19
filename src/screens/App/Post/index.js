@@ -93,14 +93,18 @@ const Post = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       {console.log('List++++++++++++++++++++++', list)}
-      <FlatList data={list.data} renderItem={renderItem} />
+      <FlatList
+        data={list.data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   stretch: {
-    width: 312,
+    width: 356,
     height: 400,
   },
   mainView: {

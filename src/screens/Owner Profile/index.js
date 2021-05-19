@@ -83,7 +83,11 @@ const OwnerProfile = props => {
   return (
     <SafeAreaView style={{flex: 1}}>
       {console.log('List==============>>>>>', list)}
-      <FlatList data={list} renderItem={renderItem} />
+      <FlatList
+        data={list}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };

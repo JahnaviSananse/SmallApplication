@@ -10,7 +10,6 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {IMAGE} from '../../../assets/images/images';
 
 const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
@@ -54,7 +53,9 @@ const UserList = ({navigation}) => {
           }>
           <Text style={styles.navComments}> GET FULL PROFILE </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('PostList')}>
+        {console.log('****************************', item.id)}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('PostList', {postList: item.id})}>
           <Text style={styles.navComments}> GET POST LISTS</Text>
         </TouchableOpacity>
       </View>
@@ -63,7 +64,11 @@ const UserList = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       {/* {console.log('List++++++++++++++++++++++', list)} */}
-      <FlatList data={list.data} renderItem={renderItem} />
+      <FlatList
+        data={list.data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };

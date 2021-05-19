@@ -79,7 +79,11 @@ const Comments = props => {
   return (
     <SafeAreaView style={{flex: 1}}>
       {/* {console.log('List++++++++++++++++++++++', list)} */}
-      <FlatList data={list.data} renderItem={renderItem} />
+      <FlatList
+        data={list.data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </SafeAreaView>
   );
 };
