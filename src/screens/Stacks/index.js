@@ -1,3 +1,4 @@
-import {SettingTab} from './SettingTab';
+import {PostTab} from './PostTab';
+import {UserListTab} from './UserListTab';
 
-export {SettingTab};
+export {PostTab, UserListTab};

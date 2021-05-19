@@ -7,7 +7,7 @@ import OwnerProfile from '../Owner Profile';
 
 const Stack = createStackNavigator();
 
-export const SettingTab = () => {
+export const PostTab = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Post" headerMode={'none'}>

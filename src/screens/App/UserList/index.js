@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
 
-const UserList = () => {
+const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
 
   // const APP_ID = '60a2006068a4f057f0c70e0f';
@@ -34,7 +34,7 @@ const UserList = () => {
           width: '80%',
           padding: '4.5%',
           margin: '5%',
-          backgroundColor: 'pink',
+          backgroundColor: '#dae1e7',
           // position: 'relative',
           alignSelf: 'center',
           borderRadius: 10,
@@ -48,11 +48,11 @@ const UserList = () => {
         <View
           style={{borderBottomWidth: 1, margin: 12, width: '100%', right: 9}}
         />
-        <TouchableOpacity>
-          <Text style={styles.navComments}> GET POST COMMENTS </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('FullProfile')}>
+          <Text style={styles.navComments}> GET FULL PROFILE </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('PostList')}>
+          <Text style={styles.navComments}> GET POST LISTS</Text>
         </TouchableOpacity>
       </View>
     );
