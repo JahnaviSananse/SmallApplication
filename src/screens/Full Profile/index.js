@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {BASE_URL} from '../../constants/api';
 import styles from './style';
+import MapView from 'react-native-maps';
 import {
   View,
   Text,
@@ -55,6 +56,15 @@ const FullProfile = props => {
                 item.location.country}
             </Text>
             <Text style={styles.street}>{item.location.street} </Text>
+            <MapView
+              style={{flex: 1}}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.05,
+                longitudeDelta: 0.05,
+              }}
+            />
           </View>
         </View>
         <View style={styles.border} />
