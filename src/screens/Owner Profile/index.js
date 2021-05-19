@@ -8,7 +8,7 @@ import {
   Image,
   SafeAreaView,
   FlatList,
-  StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
 
@@ -23,43 +23,65 @@ const OwnerProfile = () => {
       .get(`${BASE_URL}/user/uQrnqsqyh8FjSXAPc7oA`, {
         headers: {'app-id': APP_ID},
       })
-      .then(({data}) => setList(data))
+      .then(({data}) => setList([data]))
       .catch(console.error);
   }, []);
 
   const renderItem = ({item}) => {
-    console.log('itemssss*************dgesg', item);
+    // console.log('itemssss=============>');
     return (
       <View
         style={{
-          width: '96%',
-          padding: '3%',
+          width: '100%',
+          padding: '2%',
           margin: '5%',
           backgroundColor: 'pink',
           // position: 'relative',
           alignSelf: 'center',
           borderRadius: 10,
+          flexDirection: 'row',
         }}>
-        <View style={{flexDirection: 'row'}}>
-          <Image style={styles.stretch} source={{uri: item.picture}} />
-          <View style={{flexDirection: 'column'}}>
-            {/* <Text style={styles.textName}>
-              {item.owner.firstName + ' ' + item.owner.lastName}
-            </Text> */}
-            <Text style={styles.publishDate}> {item.publishDate}</Text>
-          </View>
+        <Image style={styles.dp} source={{uri: item.picture}} />
+        <View style={{flexDirection: 'column'}}>
+          <Text style={styles.id}>{item.id} </Text>
+          <Text style={styles.name}>
+            {item.title + '. ' + item.firstName + ' ' + item.lastName}
+          </Text>
+          <Text style={styles.email}>{item.email} </Text>
+          <Text style={styles.gender}>{'Gender:' + item.gender} </Text>
+          <Text style={styles.date}>{'DOB:' + item.dateOfBirth}</Text>
+          <Text style={styles.date}>{'RD:' + item.registerDate}</Text>
+          <Text style={styles.num}>{'PHONE:' + item.phone}</Text>
+        </View>
+        <View style={{flexDirection: 'column'}}>
+          <Text style={{fontSize: 9}}> Address</Text>
+          <Text style={styles.name}>
+            {item.location.country +
+              ',' +
+              item.location.country +
+              ',' +
+              item.location.country}
+          </Text>
+          <Text style={styles.street}>{item.location.street} </Text>
         </View>
         <View
-          style={{borderBottomWidth: 1.5, margin: 10, width: '100%', right: 9}}
+          style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
         />
-        <Text style={styles.message}> {item.message}</Text>
+        {/* {console.log('$$$$$$$$$$$$$$$4444', item.id)} */}
+        <TouchableOpacity>
+          <Text style={styles.navComments}> GET POST COMMENTS </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+        </TouchableOpacity>
       </View>
     );
   };
+
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* {console.log('List++++++++++++++++++++++', list)} */}
-      <FlatList data={list.data} renderItem={renderItem} />
+      {console.log('List==============>>>>>', list)}
+      <FlatList data={list} renderItem={renderItem} />
     </SafeAreaView>
   );
 };
@@ -69,6 +91,40 @@ const styles = StyleSheet.create({
     width: 65,
     height: 65,
     borderRadius: 40,
+  },
+  dp: {
+    width: 90,
+    height: 90,
+  },
+  email: {
+    fontSize: 10,
+    left: 5,
+  },
+  street: {
+    fontSize: 10,
+    left: 5,
+  },
+  gender: {
+    fontSize: 10,
+    left: 5,
+  },
+  num: {
+    fontSize: 10,
+    left: 5,
+  },
+  date: {
+    fontSize: 10,
+    left: 5,
+  },
+  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
+  id: {
+    fontSize: 9,
+    left: 5,
+    color: 'grey',
+  },
+  name: {
+    fontSize: 10,
+    left: 5,
   },
   publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
   message: {fontSize: 21, top: 5, left: 3, color: 'black'},

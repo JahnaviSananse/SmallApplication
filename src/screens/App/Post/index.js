@@ -59,7 +59,7 @@ const Post = ({navigation}) => {
           <View
             style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
           />
-          {console.log('$$$$$$$$$$$$$$$4444', item.id)}
+          {/* {console.log('$$$$$$$$$$$$$$$4444', item.id)} */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Comments', {
@@ -88,7 +88,7 @@ const Post = ({navigation}) => {
 
 const styles = StyleSheet.create({
   stretch: {
-    width: 360,
+    width: 312,
     height: 400,
   },
   mainView: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   textEmail: {fontSize: 13, top: 3, left: 3},
-  link: {fontSize: 15, top: 3, color: 'black', left: 3},
+  link: {fontSize: 15, top: 7, color: 'black', left: 3, color: 'blue'},
   likeDigit: {fontSize: 16, top: 1, color: 'black', left: 3},
   publishDate: {
     fontSize: 15,

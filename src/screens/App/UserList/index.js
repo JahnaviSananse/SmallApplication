@@ -8,7 +8,7 @@ import {
   Image,
   SafeAreaView,
   FlatList,
-  StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
 
@@ -31,7 +31,7 @@ const UserList = () => {
       <View
         style={{
           width: '80%',
-          padding: '13%',
+          padding: '4.5%',
           margin: '5%',
           backgroundColor: 'pink',
           // position: 'relative',
@@ -44,6 +44,15 @@ const UserList = () => {
           {item.title + '. ' + item.firstName + item.lastName}
         </Text>
         <Text style={styles.textEmail}> {item.email}</Text>
+        <View
+          style={{borderBottomWidth: 1, margin: 12, width: '100%', right: 9}}
+        />
+        <TouchableOpacity>
+          <Text style={styles.navComments}> GET POST COMMENTS </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -57,8 +66,15 @@ const UserList = () => {
 
 const styles = StyleSheet.create({
   stretch: {
-    width: 220,
-    height: 200,
+    width: 290,
+    height: 220,
+  },
+  navComments: {
+    fontSize: 16,
+    left: 7,
+    top: 3,
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   textEmail: {fontSize: 13.5, top: 3, left: 3},
   textName: {fontSize: 20, fontWeight: 'bold', top: 10, left: 5},
