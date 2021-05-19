@@ -12,6 +12,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import {getDateMonth} from '../../utility/util';
 
 const FullProfile = props => {
   const [list, setList] = useState([]);
@@ -30,7 +31,6 @@ const FullProfile = props => {
   }, []);
 
   const renderItem = ({item}) => {
-    // console.log('itemssss=============>');
     return (
       <View style={styles.mainView}>
         <View style={styles.row}>
@@ -42,8 +42,12 @@ const FullProfile = props => {
             </Text>
             <Text style={styles.email}>{item.email} </Text>
             <Text style={styles.gender}>{'Gender:' + item.gender} </Text>
-            <Text style={styles.date}>{'DOB:' + item.dateOfBirth}</Text>
-            <Text style={styles.date}>{'RD:' + item.registerDate}</Text>
+            <Text style={styles.date}>
+              {'DOB:' + getDateMonth(item.dateOfBirth)}
+            </Text>
+            <Text style={styles.date}>
+              {'RD:' + getDateMonth(item.registerDate)}
+            </Text>
             <Text style={styles.num}>{'PHONE:' + item.phone}</Text>
           </View>
           <View style={styles.column}>

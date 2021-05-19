@@ -10,7 +10,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {IMAGE} from '../../../assets/images/images';
+import MapView from 'react-native-maps';
 
 const OwnerProfile = props => {
   const [list, setList] = useState([]);
@@ -64,6 +64,15 @@ const OwnerProfile = props => {
                 item.location.country}
             </Text>
             <Text style={styles.street}>{item.location.street} </Text>
+            <MapView
+              style={{flex: 1, left: 15, top: 2}}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.05,
+                longitudeDelta: 0.05,
+              }}
+            />
           </View>
         </View>
         <View
