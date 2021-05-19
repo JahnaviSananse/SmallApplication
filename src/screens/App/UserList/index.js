@@ -10,6 +10,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import styles from './style';
 
 const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
@@ -28,25 +29,14 @@ const UserList = ({navigation}) => {
   const renderItem = ({item}) => {
     // console.log('itemssss*************', item);
     return (
-      <View
-        style={{
-          width: '90%',
-          padding: '6%',
-          margin: '5%',
-          backgroundColor: '#dae1e7',
-          // position: 'relative',
-          alignSelf: 'center',
-          borderRadius: 10,
-        }}>
+      <View style={styles.mainView}>
         <Image style={styles.stretch} source={{uri: item.picture}} />
         <Text style={styles.textID}> {item.id}</Text>
         <Text style={styles.textName}>
           {item.title + '. ' + item.firstName + ' ' + item.lastName}
         </Text>
         <Text style={styles.textEmail}> {item.email}</Text>
-        <View
-          style={{borderBottomWidth: 1, margin: 12, width: '100%', right: 9}}
-        />
+        <View style={styles.border} />
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('FullProfile', {fullProfile: item.id})
@@ -72,22 +62,5 @@ const UserList = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  stretch: {
-    width: 320,
-    height: 300,
-  },
-  navComments: {
-    fontSize: 16,
-    left: 7,
-    top: 3,
-    color: 'blue',
-    textDecorationLine: 'underline',
-  },
-  textEmail: {fontSize: 16, top: 5, left: 2},
-  textName: {fontSize: 25, fontWeight: 'bold', top: 10, left: 5},
-  textID: {fontSize: 22, color: 'grey', top: 10},
-});
 
 export default UserList;

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {BASE_URL} from '../../constants/api';
+import styles from './style';
 import {
   View,
   Text,
@@ -10,7 +11,6 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {IMAGE} from '../../../assets/images/images';
 
 const FullProfile = props => {
   const [list, setList] = useState([]);
@@ -31,19 +31,10 @@ const FullProfile = props => {
   const renderItem = ({item}) => {
     // console.log('itemssss=============>');
     return (
-      <View
-        style={{
-          width: '100%',
-          padding: '2%',
-          margin: '5%',
-          backgroundColor: 'pink',
-          // position: 'relative',
-          alignSelf: 'center',
-          borderRadius: 10,
-        }}>
-        <View style={{flexDirection: 'row'}}>
+      <View style={styles.mainView}>
+        <View style={styles.row}>
           <Image style={styles.dp} source={{uri: item.picture}} />
-          <View style={{flexDirection: 'column'}}>
+          <View style={styles.colum}>
             <Text style={styles.id}>{item.id} </Text>
             <Text style={styles.name}>
               {item.title + '. ' + item.firstName + ' ' + item.lastName}
@@ -54,8 +45,8 @@ const FullProfile = props => {
             <Text style={styles.date}>{'RD:' + item.registerDate}</Text>
             <Text style={styles.num}>{'PHONE:' + item.phone}</Text>
           </View>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={{fontSize: 9}}> Address</Text>
+          <View style={styles.column}>
+            <Text style={styles.address}> Address</Text>
             <Text style={styles.name}>
               {item.location.country +
                 ',' +
@@ -66,9 +57,7 @@ const FullProfile = props => {
             <Text style={styles.street}>{item.location.street} </Text>
           </View>
         </View>
-        <View
-          style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
-        />
+        <View style={styles.border} />
         {/* {console.log('$$$$$$$$$$$$$$$4444', item.id)} */}
         <TouchableOpacity>
           <Text style={styles.navComments}> GET FULL PROFILE </Text>
@@ -91,57 +80,5 @@ const FullProfile = props => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  stretch: {
-    width: 65,
-    height: 65,
-    borderRadius: 40,
-  },
-  dp: {
-    width: 90,
-    height: 90,
-  },
-  email: {
-    fontSize: 10,
-    left: 5,
-  },
-  street: {
-    fontSize: 10,
-    left: 5,
-  },
-  gender: {
-    fontSize: 10,
-    left: 5,
-  },
-  num: {
-    fontSize: 10,
-    left: 5,
-  },
-  date: {
-    fontSize: 10,
-    left: 5,
-  },
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
-  id: {
-    fontSize: 9,
-    left: 5,
-    color: 'grey',
-  },
-  name: {
-    fontSize: 10,
-    left: 5,
-  },
-  navComments: {
-    fontSize: 11,
-    left: 7,
-    top: 3,
-    color: 'blue',
-    textDecorationLine: 'underline',
-  },
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
-  message: {fontSize: 21, top: 5, left: 3, color: 'black'},
-  textName: {fontSize: 23, fontWeight: 'bold', top: 5, left: 10},
-});
 
 export default FullProfile;
