@@ -1,18 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {BASE_URL} from '../../../constants/api';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
-import styles from './style';
+import {SafeAreaView, FlatList} from 'react-native';
 import {APP_ID} from '../../../constants/api';
-import * as STRING from '../../../constants/constant';
+import UserListCard from '../../../components/UserListCard/index';
+import styles from './style';
 
 const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
@@ -26,29 +18,24 @@ const UserList = ({navigation}) => {
 
   const renderItem = ({item}) => {
     return (
-      <View style={styles.mainView}>
-        <Image style={styles.stretch} source={{uri: item.picture}} />
-        <Text style={styles.textID}> {item.id}</Text>
-        <Text style={styles.textName}>
-          {item.title + '. ' + item.firstName + ' ' + item.lastName}
-        </Text>
-        <Text style={styles.textEmail}> {item.email}</Text>
-        <View style={styles.border} />
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('FullProfile', {fullProfile: item.id})
-          }>
-          <Text style={styles.navComments}> {STRING.GET_FULL_PROFILE} </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('PostList', {postList: item.id})}>
-          <Text style={styles.navComments}> {STRING.GET_POST_LISTS} </Text>
-        </TouchableOpacity>
-      </View>
+      <UserListCard
+        picture={item.picture}
+        id={item.id}
+        name={item.title + '. ' + item.firstName + ' ' + item.lastName}
+        email={item.email}
+        FullProfilePress={() =>
+          navigation.navigate('FullProfile', {
+            fullProfile: item.id,
+          })
+        }
+        PostListPress={() =>
+          navigation.navigate('PostList', {postList: item.id})
+        }
+      />
     );
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={list.data}
         renderItem={renderItem}

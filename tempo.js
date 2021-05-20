@@ -42,3 +42,29 @@ const renderItem = ({item}) => {
     </>
   );
 };
+
+// user list -> index
+
+const renderItem = ({item}) => {
+  return (
+    <View style={styles.mainView}>
+      <Image style={styles.stretch} source={{uri: item.picture}} />
+      <Text style={styles.textID}> {item.id}</Text>
+      <Text style={styles.textName}>
+        {item.title + '. ' + item.firstName + ' ' + item.lastName}
+      </Text>
+      <Text style={styles.textEmail}> {item.email}</Text>
+      <View style={styles.border} />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('FullProfile', {fullProfile: item.id})
+        }>
+        <Text style={styles.navComments}> {STRING.GET_FULL_PROFILE} </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('PostList', {postList: item.id})}>
+        <Text style={styles.navComments}> {STRING.GET_POST_LISTS} </Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
