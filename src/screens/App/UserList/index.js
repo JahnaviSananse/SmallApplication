@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import {APP_ID} from '../../../constants/api';
+import * as STRING from '../../../constants/constant';
 
 const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
@@ -37,11 +38,11 @@ const UserList = ({navigation}) => {
           onPress={() =>
             navigation.navigate('FullProfile', {fullProfile: item.id})
           }>
-          <Text style={styles.navComments}> GET FULL PROFILE </Text>
+          <Text style={styles.navComments}> {STRING.GET_FULL_PROFILE} </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('PostList', {postList: item.id})}>
-          <Text style={styles.navComments}> GET POST LISTS</Text>
+          <Text style={styles.navComments}> {STRING.GET_POST_LISTS} </Text>
         </TouchableOpacity>
       </View>
     );

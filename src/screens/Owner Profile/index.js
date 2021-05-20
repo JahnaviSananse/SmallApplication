@@ -4,7 +4,6 @@ import {BASE_URL} from '../../constants/api';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   SafeAreaView,
   FlatList,
@@ -14,6 +13,7 @@ import MapView from 'react-native-maps';
 import {APP_ID} from '../../constants/api';
 import {getDateMonth} from '../../utility/util';
 import styles from './style';
+import * as STRING from '../../constants/constant';
 
 const OwnerProfile = props => {
   const [list, setList] = useState([]);
@@ -29,16 +29,7 @@ const OwnerProfile = props => {
 
   const renderItem = ({item}) => {
     return (
-      <View
-        style={{
-          width: '100%',
-          padding: '2%',
-          margin: '5%',
-          backgroundColor: '#dae1e7',
-          // position: 'relative',
-          alignSelf: 'center',
-          borderRadius: 10,
-        }}>
+      <View style={styles.mainView}>
         <View style={{flexDirection: 'row'}}>
           <Image style={styles.dp} source={{uri: item.picture}} />
           <View style={{flexDirection: 'column'}}>
@@ -57,7 +48,7 @@ const OwnerProfile = props => {
             <Text style={styles.num}>{'PHONE:' + item.phone}</Text>
           </View>
           <View style={{flexDirection: 'column'}}>
-            <Text style={{fontSize: 9}}> Address</Text>
+            <Text style={{fontSize: 9}}> {STRING.ADDRESS}</Text>
             <Text style={styles.name}>
               {item.location.country +
                 ',' +
@@ -67,7 +58,7 @@ const OwnerProfile = props => {
             </Text>
             <Text style={styles.street}>{item.location.street} </Text>
             <MapView
-              style={{flex: 1, left: 15, top: 2}}
+              style={styles.map}
               initialRegion={{
                 latitude: 37.78825,
                 longitude: -122.4324,
@@ -77,14 +68,12 @@ const OwnerProfile = props => {
             />
           </View>
         </View>
-        <View
-          style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
-        />
+        <View style={styles.border} />
         <TouchableOpacity>
-          <Text style={styles.navComments}> GET FULL PROFILE </Text>
+          <Text style={styles.navComments}> {STRING.GET_FULL_PROFILE} </Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+          <Text style={styles.navComments}> {STRING.GET_OWNER_PROFILE}</Text>
         </TouchableOpacity>
       </View>
     );

@@ -4,22 +4,20 @@ import {BASE_URL} from '../../constants/api';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   SafeAreaView,
   FlatList,
-  StatusBar,
   TouchableOpacity,
 } from 'react-native';
 import {IMAGE} from '../../assets/images/images';
 import {APP_ID} from '../../constants/api';
 import {getDateMonth} from '../../utility/util';
 import styles from './style';
+import * as STRING from '../../constants/constant';
 
 const PostList = props => {
   const [list, setList] = useState([]);
 
-  console.log('>>>>>>>>>>>>>>>', props.route.params?.postList);
   useEffect(() => {
     axios
       .get(`${BASE_URL}/user/${props.route.params?.postList}/post`, {
@@ -33,7 +31,7 @@ const PostList = props => {
     return (
       <>
         <View style={styles.mainView}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={styles.border}>
             <Image style={styles.dp} source={{uri: item.owner.picture}} />
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.name}>
@@ -42,24 +40,17 @@ const PostList = props => {
               <Text style={styles.email}> {item.owner.email}</Text>
             </View>
           </View>
-          <View
-            style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
-          />
+          <View style={styles.border} />
           <Image style={styles.stretch} source={{uri: item.image}} />
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
+          <View style={styles.row}>
             {item.tags.map(value => {
               return <Text style={styles.tags}> {value}</Text>;
             })}
           </View>
           <Text style={styles.text}> {item.text}</Text>
           <Text style={styles.link}> {item.link}</Text>
-          <View
-            style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
-          />
-          <View style={{flexDirection: 'row'}}>
+          <View style={styles.border} />
+          <View style={styles.row}>
             <Image style={styles.likeButton} source={IMAGE.FILLHEART} />
             <Text style={styles.likeDigit}> {item.likes}</Text>
             <Text style={styles.like}> Likes</Text>
@@ -67,21 +58,19 @@ const PostList = props => {
               {getDateMonth(item.publishDate)}
             </Text>
           </View>
-          <View
-            style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
-          />
+          <View style={styles.border} />
           <TouchableOpacity>
-            <Text style={styles.navComments}> GET POST COMMENTS </Text>
+            <Text style={styles.navComments}> {STRING.GET_POST_COMMENTS} </Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+            <Text style={styles.navComments}> {STRING.GET_OWNER_PROFILE}</Text>
           </TouchableOpacity>
         </View>
       </>
     );
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={list.data}
         renderItem={renderItem}

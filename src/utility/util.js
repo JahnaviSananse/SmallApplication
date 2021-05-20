@@ -1,3 +1,4 @@
+// function to convert IST to mon dd yyyy format
 let dateTime;
 export const getDateMonth = dateOfBirth => {
   dateTime = new Date(dateOfBirth);
@@ -20,8 +21,6 @@ export const getDateMonth = dateOfBirth => {
   let month = date.getMonth();
   let monthName = monthNames[month];
   let year = date.getFullYear();
-  // alert(monthName + ' ' + day + ' ' + year);
   let dateMonth = monthName + ' ' + day + ' ' + year;
   return dateMonth;
-  // alert(date);
 };

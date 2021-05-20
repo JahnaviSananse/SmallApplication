@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import THEME from '../../constants/colors';
 
 const styles = StyleSheet.create({
   stretch: {
@@ -10,8 +11,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: '2%',
     margin: '5%',
-    backgroundColor: '#dae1e7',
-    // position: 'relative',
+    backgroundColor: THEME.PATTENS_BLUE,
     alignSelf: 'center',
     borderRadius: 10,
   },
@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
     left: 5,
   },
   border: {borderBottomWidth: 1, margin: 10, width: '100%', right: 9},
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
+  publishDate: {fontSize: 17, top: 5, left: 3, color: THEME.GREY},
   id: {
     fontSize: 9,
     left: 5,
-    color: 'grey',
+    color: THEME.GREY,
   },
   name: {
     fontSize: 10,
@@ -61,11 +61,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
     left: 7,
     top: 3,
-    color: 'blue',
+    color: THEME.BLUE,
     textDecorationLine: 'underline',
   },
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
-  message: {fontSize: 21, top: 5, left: 3, color: 'black'},
+  map: {flex: 1},
+  publishDate: {fontSize: 17, top: 5, left: 3, color: THEME.GREY},
+  message: {fontSize: 21, top: 5, left: 3, color: THEME.BLACK},
   textName: {fontSize: 23, fontWeight: 'bold', top: 5, left: 10},
 });
 

@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import {getDateMonth} from '../../utility/util';
 import {APP_ID} from '../../constants/api';
-
+import * as STRING from '../../constants/constant';
 const FullProfile = props => {
   const [list, setList] = useState([]);
 
@@ -48,7 +48,7 @@ const FullProfile = props => {
             <Text style={styles.num}>{'PHONE:' + item.phone}</Text>
           </View>
           <View style={styles.column}>
-            <Text style={styles.address}> Address</Text>
+            <Text style={styles.address}> {STRING.ADDRESS}</Text>
             <Text style={styles.name}>
               {item.location.country +
                 ',' +
@@ -58,7 +58,7 @@ const FullProfile = props => {
             </Text>
             <Text style={styles.street}>{item.location.street} </Text>
             <MapView
-              style={{flex: 1}}
+              style={styles.map}
               initialRegion={{
                 latitude: 37.78825,
                 longitude: -122.4324,
@@ -70,10 +70,10 @@ const FullProfile = props => {
         </View>
         <View style={styles.border} />
         <TouchableOpacity>
-          <Text style={styles.navComments}> GET FULL PROFILE </Text>
+          <Text style={styles.navComments}> {STRING.GET_FULL_PROFILE} </Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+          <Text style={styles.navComments}> {STRING.GET_OWNER_PROFILE}</Text>
         </TouchableOpacity>
       </View>
     );

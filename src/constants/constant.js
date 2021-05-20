@@ -1,0 +1,11 @@
+export const GET_POST_COMMENTS = 'GET POST COMMENTS';
+export const GET_OWNER_PROFILE = 'GET OWNER PROFILE';
+export const GET_FULL_PROFILE = 'GET FULL PROFILE';
+export const GET_POST_LISTS = 'GET POST LISTS';
+export const USER_LIST = 'UserList';
+export const POST = 'Post';
+export const FULL_PROFILE = 'FullProfile';
+export const POST_LIST = 'PostList';
+export const COMMENTS = 'Comments';
+export const OWNER_PROFILE = 'OwnerProfile';
+export const ADDRESS = 'Address';

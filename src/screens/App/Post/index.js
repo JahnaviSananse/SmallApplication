@@ -4,16 +4,15 @@ import {BASE_URL} from '../../../constants/api';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   SafeAreaView,
   FlatList,
-  StatusBar,
   TouchableOpacity,
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
 import styles from './style';
 import {APP_ID} from '../../../constants/api';
+import * as STRING from '../../../constants/constant';
 const Post = ({navigation}) => {
   const [list, setList] = useState([]);
 
@@ -39,9 +38,6 @@ const Post = ({navigation}) => {
           </View>
           <View style={styles.border} />
           <Image style={styles.stretch} source={{uri: item.image}} />
-          {/* <Text style={styles.tags}> {item.tags[0]}</Text>
-          <Text style={styles.tags}> {item.tags[1]}</Text>
-          <Text style={styles.tags}> {item.tags[2]}</Text> */}
           <View style={styles.row}>
             {item.tags.map(value => {
               return <Text style={styles.tags}> {value}</Text>;
@@ -63,13 +59,13 @@ const Post = ({navigation}) => {
                 commentId: item.id,
               });
             }}>
-            <Text style={styles.navComments}> GET POST COMMENTS </Text>
+            <Text style={styles.navComments}> {STRING.GET_POST_COMMENTS} </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('OwnerProfile', {ownerId: item.owner.id});
             }}>
-            <Text style={styles.navComments}> GET OWNER PROFILE</Text>
+            <Text style={styles.navComments}> {STRING.GET_OWNER_PROFILE}</Text>
           </TouchableOpacity>
         </View>
       </>
