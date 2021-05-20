@@ -1,81 +1,46 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import {BASE_URL} from '../../../constants/api';
-import {
-  View,
-  Text,
-  Image,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
-import {IMAGE} from '../../../assets/images/images';
+import {SafeAreaView, FlatList} from 'react-native';
 import styles from './style';
-import {APP_ID} from '../../../constants/api';
-import * as STRING from '../../../constants/constant';
+import {API_CALL_GET} from '../../../api/request';
+import PostListCard from '../../../components/PostListCard/index';
 
 const Post = ({navigation}) => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/post`, {headers: {'app-id': APP_ID}})
-      .then(({data}) => setList(data))
-      .catch(console.error);
+    let url = `${BASE_URL}/post`;
+    API_CALL_GET(url).then(data => setList(data));
   }, []);
 
   const renderItem = ({item}) => {
     return (
-      <>
-        <View style={styles.mainView}>
-          <View style={styles.row}>
-            <Image style={styles.dp} source={{uri: item.owner.picture}} />
-            <View style={{flexDirection: 'column'}}>
-              <Text style={styles.name}>
-                {item.owner.firstName + ' ' + item.owner.lastName}
-              </Text>
-              <Text style={styles.email}> {item.owner.email}</Text>
-            </View>
-          </View>
-          <View style={styles.border} />
-          <Image style={styles.stretch} source={{uri: item.image}} />
-          <View style={styles.row}>
-            {item.tags.map(value => {
-              return <Text style={styles.tags}> {value}</Text>;
-            })}
-          </View>
-          <Text style={styles.text}> {item.text}</Text>
-          <Text style={styles.link}> {item.link}</Text>
-          <View style={styles.border} />
-          <View style={styles.row}>
-            <Image style={styles.likeButton} source={IMAGE.FILLHEART} />
-            <Text style={styles.likeDigit}> {item.likes}</Text>
-            <Text style={styles.like}>{STRING.LIKES} </Text>
-            <Text style={styles.publishDate}> {item.publishDate}</Text>
-          </View>
-          <View style={styles.border} />
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Comments', {
-                commentId: item.id,
-              });
-            }}>
-            <Text style={styles.navComments}> {STRING.GET_POST_COMMENTS} </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('OwnerProfile', {ownerId: item.owner.id});
-            }}>
-            <Text style={styles.navComments}> {STRING.GET_OWNER_PROFILE}</Text>
-          </TouchableOpacity>
-        </View>
-      </>
+      <PostListCard
+        picture={item.owner.picture}
+        name={item.owner.firstName + ' ' + item.owner.lastName}
+        email={item.owner.email}
+        image={item.image}
+        tags={item.tags}
+        text={item.text}
+        link={item.link}
+        likes={item.likes}
+        publishDate={item.publishDate}
+        id={item.id}
+        owner_id={item.owner.id}
+        route={navigation}
+        PostComment={true}
+        // PostCommentPress={() =>
+        //   navigation.navigate('Comments', {
+        //     commentId: item.id,
+        //   })
+        // }
+      />
     );
   };
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={list.data}
+        data={list?.data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />

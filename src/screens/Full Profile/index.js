@@ -13,19 +13,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {getDateMonth} from '../../utility/util';
-import {APP_ID} from '../../constants/api';
-import * as STRING from '../../constants/constant';
 import FullProfileCard from '../../components/FullProfileCard';
+import {API_CALL_GET} from '../../api/request';
 const FullProfile = props => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/user/${props.route.params?.fullProfile}`, {
-        headers: {'app-id': APP_ID},
-      })
-      .then(({data}) => setList([data]))
-      .catch(console.error);
+    let url = `${BASE_URL}/user/${props.route.params?.fullProfile}`;
+    API_CALL_GET(url).then(data => setList([data]));
   }, []);
 
   const renderItem = ({item}) => {

@@ -13,19 +13,15 @@ import {IMAGE} from '../../assets/images/images';
 import {APP_ID} from '../../constants/api';
 import {getDateMonth} from '../../utility/util';
 import styles from './style';
-import * as STRING from '../../constants/constant';
+import {API_CALL_GET} from '../../api/request';
 import PostListCard from '../../components/PostListCard';
 
 const PostList = props => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/user/${props.route.params?.postList}/post`, {
-        headers: {'app-id': APP_ID},
-      })
-      .then(({data}) => setList(data))
-      .catch(console.error);
+    let url = `${BASE_URL}/user/${props.route.params?.postList}/post`;
+    API_CALL_GET(url).then(data => setList(data));
   }, []);
 
   const renderItem = ({item}) => {

@@ -14,8 +14,10 @@ const PostListCard = props => {
     link,
     likes,
     publishDate,
-    OwnerProfilePress,
-    commentPress,
+    owner_id,
+    id,
+    route,
+    PostComment,
   } = props;
   return (
     <View style={styles.mainView}>
@@ -43,10 +45,24 @@ const PostListCard = props => {
         <Text style={styles.publishDate}> {publishDate}</Text>
       </View>
       <View style={styles.border} />
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          PostComment
+            ? route.navigate('Comments', {
+                commentId: id,
+              })
+            : null
+        }>
         <Text style={styles.navComments}> {STRING.GET_POST_COMMENTS} </Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          PostComment
+            ? route.navigate('OwnerProfile', {
+                ownerId: owner_id,
+              })
+            : null
+        }>
         <Text style={styles.navComments}> {STRING.GET_OWNER_PROFILE}</Text>
       </TouchableOpacity>
     </View>

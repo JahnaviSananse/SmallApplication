@@ -1,20 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import {BASE_URL} from '../../../constants/api';
 import {SafeAreaView, FlatList} from 'react-native';
-import {APP_ID} from '../../../constants/api';
 import UserListCard from '../../../components/UserListCard/index';
 import styles from './style';
+import {API_CALL_GET} from '../../../api/request';
 
 const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
-
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/user`, {headers: {'app-id': APP_ID}})
-      .then(({data}) => setList(data))
-      .catch(console.error);
+    let url = `${BASE_URL}/user`;
+    API_CALL_GET(url).then(data => setList(data));
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`${BASE_URL}/user`, {headers: {'app-id': APP_ID}})
+  //     .then(({data}) => setList(data))
+  //     .catch(console.error);
+  // }, []);
 
   const renderItem = ({item}) => {
     return (
