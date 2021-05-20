@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import THEME from '../../../constants/colors';
+import THEME from '../../constants/colors';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     top: 2.5,
     color: THEME.GREY,
-    left: 80,
+    left: 150,
   },
   textName: {fontSize: 20, fontWeight: 'bold', top: 10, left: 5},
   textID: {fontSize: 19, color: THEME.GREY, top: 10},
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: THEME.BLACK,
     borderRadius: 15,
-    backgroundColor: THEME.Razzmatazz,
+    backgroundColor: '#ff0066',
     margin: 5,
     padding: 5,
   },

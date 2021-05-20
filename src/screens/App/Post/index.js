@@ -13,6 +13,7 @@ import {IMAGE} from '../../../assets/images/images';
 import styles from './style';
 import {APP_ID} from '../../../constants/api';
 import * as STRING from '../../../constants/constant';
+
 const Post = ({navigation}) => {
   const [list, setList] = useState([]);
 
@@ -49,7 +50,7 @@ const Post = ({navigation}) => {
           <View style={styles.row}>
             <Image style={styles.likeButton} source={IMAGE.FILLHEART} />
             <Text style={styles.likeDigit}> {item.likes}</Text>
-            <Text style={styles.like}> Likes</Text>
+            <Text style={styles.like}>{STRING.LIKES} </Text>
             <Text style={styles.publishDate}> {item.publishDate}</Text>
           </View>
           <View style={styles.border} />

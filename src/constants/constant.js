@@ -9,3 +9,4 @@ export const POST_LIST = 'PostList';
 export const COMMENTS = 'Comments';
 export const OWNER_PROFILE = 'OwnerProfile';
 export const ADDRESS = 'Address';
+export const LIKES = 'Likes';
