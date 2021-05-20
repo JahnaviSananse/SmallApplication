@@ -1,11 +1,9 @@
 import {StyleSheet} from 'react-native';
 
+StyleSheet;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   stretch: {
-    width: 356,
+    width: 355,
     height: 400,
   },
   mainView: {
@@ -17,23 +15,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
   },
-  row: {flexDirection: 'row'},
   likeButton: {
     height: 15,
     width: 15,
     top: 5,
-  },
-  border: {
-    borderBottomWidth: 1,
-    margin: 10,
-    width: '100%',
-    right: 9,
   },
   dp: {
     width: 60,
     height: 60,
     borderRadius: 30,
   },
+  like: {fontSize: 16, left: 7, top: 1},
   like: {fontSize: 16, left: 7, top: 1},
   navComments: {
     fontSize: 16,
@@ -49,7 +41,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     top: 2.5,
     color: 'grey',
-    left: 80,
+    left: 169,
   },
   textName: {fontSize: 20, fontWeight: 'bold', top: 10, left: 5},
   textID: {fontSize: 19, color: 'grey', top: 10},

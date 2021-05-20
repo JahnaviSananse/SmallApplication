@@ -11,14 +11,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MapView from 'react-native-maps';
+import {APP_ID} from '../../constants/api';
+import {getDateMonth} from '../../utility/util';
+import styles from './style';
 
 const OwnerProfile = props => {
   const [list, setList] = useState([]);
 
-  // const APP_ID = '60a2006068a4f057f0c70e0f';
-  const APP_ID = '60a4b70100c81f3310527bd1';
-  // const APP_ID = '60a353bb301f6600f7a467af';
-  // console.log('IIIIIIIIIIIIIIIIII', props.route.params?.ownerId);
   useEffect(() => {
     axios
       .get(`${BASE_URL}/user/${props.route.params?.ownerId}`, {
@@ -29,14 +28,13 @@ const OwnerProfile = props => {
   }, []);
 
   const renderItem = ({item}) => {
-    // console.log('itemssss=============>');
     return (
       <View
         style={{
           width: '100%',
           padding: '2%',
           margin: '5%',
-          backgroundColor: 'pink',
+          backgroundColor: '#dae1e7',
           // position: 'relative',
           alignSelf: 'center',
           borderRadius: 10,
@@ -50,8 +48,12 @@ const OwnerProfile = props => {
             </Text>
             <Text style={styles.email}>{item.email} </Text>
             <Text style={styles.gender}>{'Gender:' + item.gender} </Text>
-            <Text style={styles.date}>{'DOB:' + item.dateOfBirth}</Text>
-            <Text style={styles.date}>{'RD:' + item.registerDate}</Text>
+            <Text style={styles.date}>
+              {'DOB:' + getDateMonth(item.dateOfBirth)}
+            </Text>
+            <Text style={styles.date}>
+              {'RD:' + getDateMonth(item.registerDate)}
+            </Text>
             <Text style={styles.num}>{'PHONE:' + item.phone}</Text>
           </View>
           <View style={{flexDirection: 'column'}}>
@@ -78,7 +80,6 @@ const OwnerProfile = props => {
         <View
           style={{borderBottomWidth: 1, margin: 10, width: '100%', right: 9}}
         />
-        {/* {console.log('$$$$$$$$$$$$$$$4444', item.id)} */}
         <TouchableOpacity>
           <Text style={styles.navComments}> GET FULL PROFILE </Text>
         </TouchableOpacity>
@@ -91,7 +92,6 @@ const OwnerProfile = props => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {console.log('List==============>>>>>', list)}
       <FlatList
         data={list}
         renderItem={renderItem}
@@ -100,57 +100,5 @@ const OwnerProfile = props => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  stretch: {
-    width: 65,
-    height: 65,
-    borderRadius: 40,
-  },
-  dp: {
-    width: 90,
-    height: 90,
-  },
-  email: {
-    fontSize: 10,
-    left: 5,
-  },
-  street: {
-    fontSize: 10,
-    left: 5,
-  },
-  gender: {
-    fontSize: 10,
-    left: 5,
-  },
-  num: {
-    fontSize: 10,
-    left: 5,
-  },
-  date: {
-    fontSize: 10,
-    left: 5,
-  },
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
-  id: {
-    fontSize: 9,
-    left: 5,
-    color: 'grey',
-  },
-  name: {
-    fontSize: 10,
-    left: 5,
-  },
-  navComments: {
-    fontSize: 11,
-    left: 7,
-    top: 3,
-    color: 'blue',
-    textDecorationLine: 'underline',
-  },
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
-  message: {fontSize: 21, top: 5, left: 3, color: 'black'},
-  textName: {fontSize: 23, fontWeight: 'bold', top: 5, left: 10},
-});
 
 export default OwnerProfile;

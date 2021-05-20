@@ -11,15 +11,12 @@ import {
   StatusBar,
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
+import {APP_ID} from '../../constants/api';
+import {getDateMonth} from '../../utility/util';
 
 const Comments = props => {
   const [list, setList] = useState([]);
 
-  // const APP_ID = '60a2006068a4f057f0c70e0f';
-  // const APP_ID = '60a353bb301f6600f7a467af';
-  const APP_ID = '60a4b70100c81f3310527bd1';
-
-  //   console.log('@@@@@@@@@@@@@@@2222', props.route.params?.commentId);
   useEffect(() => {
     axios
       .get(
@@ -33,19 +30,17 @@ const Comments = props => {
   }, []);
 
   const renderItem = ({item}) => {
-    // console.log('itemssss*************', item);
     return (
       <View
         style={{
           width: '96%',
           padding: '3%',
           margin: '5%',
-          backgroundColor: 'pink',
+          backgroundColor: '#dae1e7',
           // position: 'relative',
           alignSelf: 'center',
           borderRadius: 10,
         }}>
-        {/* {console.log('OOOOOOOOOOOO', list.length)} */}
         {list ? (
           <>
             <View style={{flexDirection: 'row'}}>
@@ -57,7 +52,9 @@ const Comments = props => {
                 <Text style={styles.textName}>
                   {item.owner.firstName + ' ' + item.owner.lastName}
                 </Text>
-                <Text style={styles.publishDate}> {item.publishDate}</Text>
+                <Text style={styles.publishDate}>
+                  {getDateMonth(item.publishDate)}
+                </Text>
               </View>
             </View>
             <View
@@ -78,7 +75,6 @@ const Comments = props => {
   };
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* {console.log('List++++++++++++++++++++++', list)} */}
       <FlatList
         data={list.data}
         renderItem={renderItem}
@@ -94,7 +90,7 @@ const styles = StyleSheet.create({
     height: 65,
     borderRadius: 40,
   },
-  publishDate: {fontSize: 17, top: 5, left: 3, color: 'grey'},
+  publishDate: {fontSize: 17, top: 5, left: 8.5, color: 'grey'},
   message: {fontSize: 21, top: 5, left: 3, color: 'black'},
   textName: {fontSize: 23, fontWeight: 'bold', top: 5, left: 10},
 });

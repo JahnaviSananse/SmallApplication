@@ -13,14 +13,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {getDateMonth} from '../../utility/util';
+import {APP_ID} from '../../constants/api';
 
 const FullProfile = props => {
   const [list, setList] = useState([]);
 
-  // const APP_ID = '60a2006068a4f057f0c70e0f';
-  const APP_ID = '60a4b70100c81f3310527bd1';
-  // const APP_ID = '60a353bb301f6600f7a467af';
-  // console.log('IIIIIIIIIIIIIIIIII', props.route.params?.ownerId);
   useEffect(() => {
     axios
       .get(`${BASE_URL}/user/${props.route.params?.fullProfile}`, {
@@ -72,7 +69,6 @@ const FullProfile = props => {
           </View>
         </View>
         <View style={styles.border} />
-        {/* {console.log('$$$$$$$$$$$$$$$4444', item.id)} */}
         <TouchableOpacity>
           <Text style={styles.navComments}> GET FULL PROFILE </Text>
         </TouchableOpacity>
@@ -85,7 +81,6 @@ const FullProfile = props => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {console.log('List>>>>>', list)}
       <FlatList
         data={list}
         renderItem={renderItem}

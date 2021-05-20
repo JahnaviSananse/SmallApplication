@@ -20,11 +20,8 @@ export const getDateMonth = dateOfBirth => {
   let month = date.getMonth();
   let monthName = monthNames[month];
   let year = date.getFullYear();
-
   // alert(monthName + ' ' + day + ' ' + year);
-
   let dateMonth = monthName + ' ' + day + ' ' + year;
   return dateMonth;
   // alert(date);
-  // console.log('itemssss=============>');
 };

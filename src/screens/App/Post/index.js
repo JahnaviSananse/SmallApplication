@@ -13,13 +13,9 @@ import {
 } from 'react-native';
 import {IMAGE} from '../../../assets/images/images';
 import styles from './style';
-
+import {APP_ID} from '../../../constants/api';
 const Post = ({navigation}) => {
   const [list, setList] = useState([]);
-
-  // const APP_ID = '60a2006068a4f057f0c70e0f';
-  // const APP_ID = '60a353bb301f6600f7a467af';
-  const APP_ID = '60a4b70100c81f3310527bd1';
 
   useEffect(() => {
     axios
@@ -29,7 +25,6 @@ const Post = ({navigation}) => {
   }, []);
 
   const renderItem = ({item}) => {
-    // console.log('itemssss*************', item);
     return (
       <>
         <View style={styles.mainView}>
@@ -62,7 +57,6 @@ const Post = ({navigation}) => {
             <Text style={styles.publishDate}> {item.publishDate}</Text>
           </View>
           <View style={styles.border} />
-          {/* {console.log('$$$$$$$$$$$$$$$4444', item.id)} */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Comments', {
@@ -71,7 +65,6 @@ const Post = ({navigation}) => {
             }}>
             <Text style={styles.navComments}> GET POST COMMENTS </Text>
           </TouchableOpacity>
-          {/* {console.log('!!!!!!!!!!!!!!!!!!', item.owner.id)} */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('OwnerProfile', {ownerId: item.owner.id});
@@ -84,7 +77,6 @@ const Post = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      {/* {console.log('List++++++++++++++++++++++', list)} */}
       <FlatList
         data={list.data}
         renderItem={renderItem}

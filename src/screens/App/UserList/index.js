@@ -11,13 +11,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
+import {APP_ID} from '../../../constants/api';
 
 const UserList = ({navigation}) => {
   const [list, setList] = useState([]);
-
-  // const APP_ID = '60a2006068a4f057f0c70e0f';
-  // const APP_ID = '60a353bb301f6600f7a467af';
-  const APP_ID = '60a4b70100c81f3310527bd1';
 
   useEffect(() => {
     axios
@@ -27,7 +24,6 @@ const UserList = ({navigation}) => {
   }, []);
 
   const renderItem = ({item}) => {
-    // console.log('itemssss*************', item);
     return (
       <View style={styles.mainView}>
         <Image style={styles.stretch} source={{uri: item.picture}} />
@@ -43,7 +39,6 @@ const UserList = ({navigation}) => {
           }>
           <Text style={styles.navComments}> GET FULL PROFILE </Text>
         </TouchableOpacity>
-        {console.log('****************************', item.id)}
         <TouchableOpacity
           onPress={() => navigation.navigate('PostList', {postList: item.id})}>
           <Text style={styles.navComments}> GET POST LISTS</Text>
@@ -53,7 +48,6 @@ const UserList = ({navigation}) => {
   };
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* {console.log('List++++++++++++++++++++++', list)} */}
       <FlatList
         data={list.data}
         renderItem={renderItem}
